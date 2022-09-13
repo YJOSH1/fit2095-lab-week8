@@ -21,7 +21,7 @@ export class AppComponent {
   inputAddress: string = "";
   inputWeight: number = 0;
   inputCost: number = 0;
-  inputFragile: boolean = false;  
+  inputFragile: boolean = false; 
 
   addParcel() {
     let newParcel: parcel = {
@@ -33,7 +33,17 @@ export class AppComponent {
       fragile: this.inputFragile
     };
     this.db.push(newParcel);
-    console.log(this.db);
   }
 
+  deleteZerWeightPar() {
+    for (var i = this.db.length - 1; i >= 0; --i) {
+      if (this.db[i].weight == 0) {
+          this.db.splice(i,1);
+      }
+    }
+  }
+
+  deleteParcel(index: number) {
+    this.db.splice(index, 1);
+  }
 }

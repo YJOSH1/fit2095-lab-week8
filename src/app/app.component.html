@@ -11,4 +11,24 @@ Fragile<br>
     <option value="true">True</option>
     <option value="false">False</option>
 </select><br>
-<button (click)="addParcel()">Add Parcel</button>
+<button (click)="addParcel()">Add Parcel {{db.length}}</button>
+<button (click)="deleteZerWeightPar()">Delete Parcels With 0 Weight</button>
+<table>
+    <tr>
+      <th>#</th>
+      <th>Sender</th>
+      <th>Address</th>
+      <th>Weight</th>
+      <th>Cost</th>
+      <th>Fragile?</th>
+    </tr>
+    <tr *ngFor="let parcel of db; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{db[i].sender}}</td>
+      <td>{{db[i].address}}</td>
+      <td>{{db[i].weight}}</td>
+      <td>{{db[i].cost}}</td>
+      <td>{{db[i].fragile}}</td>
+      <td><button (click)="deleteParcel(i)">X</button></td>
+    </tr>
+  </table>
