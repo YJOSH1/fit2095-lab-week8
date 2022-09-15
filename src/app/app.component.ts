@@ -22,6 +22,8 @@ export class AppComponent {
   inputWeight: number = 0;
   inputCost: number = 0;
   inputFragile: boolean = false; 
+  parcelWeightCount: parcel[] = [];
+  
 
   addParcel() {
     let newParcel: parcel = {
@@ -33,6 +35,9 @@ export class AppComponent {
       fragile: this.inputFragile
     };
     this.db.push(newParcel);
+    this.parcelWeightCount = this.db.filter(function(p) {
+      return p.weight === 0;
+    });
   }
 
   deleteZerWeightPar() {
